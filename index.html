@@ -1,117 +1,197 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Happy Birthday Abdullah 🎉</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #0f0f0f;
-      color: #fff;
+      background: linear-gradient(to right, #ffe6f0, #e0f7fa);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       text-align: center;
-      overflow-x: hidden;
+      color: #333;
     }
-
     h1 {
-      font-size: 3em;
+      font-size: 3rem;
       margin-top: 50px;
-      color: #ff4081;
+      animation: popIn 1s ease-in-out;
     }
-
-    p {
-      font-size: 1.2em;
-      margin: 15px 20px;
+    @keyframes popIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
     }
-
-    img {
-      width: 250px;
-      height: auto;
-      border-radius: 12px;
-      margin: 20px 0;
-      border: 3px solid #ff4081;
+    .message {
+      font-size: 1.5rem;
+      margin: 20px;
+      color: #555;
     }
-
+    .photo-card {
+      margin: 30px auto;
+      width: 300px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+    .photo-card img {
+      width: 100%;
+      display: block;
+    }
+    .footer {
+      margin-top: 40px;
+      font-size: 1.2rem;
+      color: #888;
+    }
+    .confetti {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 100;
+    }
+    .secret-button {
+      margin-top: 30px;
+      padding: 12px 24px;
+      background-color: #ff99c8;
+      color: white;
+      font-size: 1rem;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: background 0.3s;
+    }
+    .secret-button:hover {
+      background-color: #ff66a3;
+    }
+    .popup-card {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      z-index: 200;
+      max-width: 90%;
+      font-size: 1.2rem;
+      color: #444;
+    }
+    .popup-card .close-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #ff99c8;
+      color: white;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+    }
     .typing {
-      font-family: monospace;
-      color: #00e5ff;
-      font-size: 1.1em;
-      white-space: pre-wrap;
-      margin: 30px;
+      border-right: 2px solid #ff99c8;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+      animation: blinkCursor 0.7s steps(1) infinite;
     }
-
-    .final {
-      background: #1f1f1f;
-      padding: 20px;
-      border-radius: 10px;
-      margin: 40px auto;
-      width: 90%;
-      max-width: 600px;
-      box-shadow: 0 0 20px #ff4081;
-    }
-
-    .heart {
-      animation: pulse 1.5s infinite;
-      color: #ff4081;
-      font-size: 2em;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1); }
+    @keyframes blinkCursor {
+      0% { border-color: #ff99c8; }
+      50% { border-color: transparent; }
+      100% { border-color: #ff99c8; }
     }
   </style>
 </head>
 <body>
+  <canvas class="confetti"></canvas>  <h1>🎂 Happy Birthday Abdullah 🎂</h1>
+  <div class="message">
+    Wishing the happiest birthday to someone who brings light, laughter, and warmth wherever he goes 💫<br><br>
+    May your day be as kind and inspiring as your heart. You deserve all the joy and love this world has to offer 💖
+  </div>  <div class="photo-card">
+    <img src="https://i.imgur.com/1Q9Z1Z1.jpg" alt="Birthday Photo" />
+  </div>  <div class="message">
+    You’ve always been someone who makes things better, whether it’s fixing code or lifting someone’s mood 🌈<br>
+    I’m really lucky to know you.<br><br>
+    <em>I’m not your someone special… but I wouldn’t mind being one day 💭</em>
+  </div><button class="secret-button" onclick="showPopup()">Click Me 💌</button>
 
-  <h1>🎉 Happy Birthday, Abdullah! 🎂</h1>
-  <p>You're not just a dev... You're the guy who debugs my bad days 😘</p>
-  <img src="abdullah.jpg" alt="Birthday Boy Abdullah">
-
-  <div class="typing" id="typewriter"></div>
-
-  <p>💻 If you were a Git repo, I'd fork you just to keep you forever.</p>
-  <p>🧠 You must be written in React... because every time I see you, I feel a re-render in my heart ❤️</p>
-
-  <div class="final">
-    <p class="heart">💖</p>
-    <p>So... Happy Birthday again, Abdullah ✨</p>
-    <p>Keep coding, keep smiling, and maybe... keep guessing how much this dev girl admires you 😉</p>
-  </div>
-
-  <script>
-    const text = [
-      "const myCrush = 'You 😏';",
-      "// Happy Birthday to the only guy whose code (and smile) I’d never refactor.",
-      "let message = 'Hope your day is full of cake, commits, and maybe... me 😘';"
-    ];
-
-    let line = 0;
-    let char = 0;
-    const typewriter = document.getElementById("typewriter");
-
-    function typeLine() {
-      if (line < text.length) {
-        if (char < text[line].length) {
-          typewriter.innerHTML += text[line].charAt(char);
-          char++;
-          setTimeout(typeLine, 50);
-        } else {
-          typewriter.innerHTML += "<br>";
-          line++;
-          char = 0;
-          setTimeout(typeLine, 500);
-        }
-      }
+  <div class="popup-card" id="popup">
+    <span id="typingText" class="typing"></span><br>
+    <button class="close-btn" onclick="closePopup()">Close</button>
+  </div>  <div class="footer">
+    With love,<br>
+    💖 Romi 💖
+  </div>  <script>
+    function showPopup() {
+      document.getElementById('popup').style.display = 'block';
+      typeMessage();
     }
 
-    typeLine();
+    function closePopup() {
+      document.getElementById('popup').style.display = 'none';
+      document.getElementById('typingText').textContent = '';
+    }
 
-    console.log("Psst... Abdullah, you're not just any variable. You're my favorite constant. 💖");
-  </script>
+    function typeMessage() {
+      const message = "💬 They say devs don't get attached... and yet here I am, writing you a birthday wish that feels like a confession 💗✨";
+      const target = document.getElementById("typingText");
+      let index = 0;
+      const speed = 50;
 
-</body>
-</html>
+      function typeChar() {
+        if (index < message.length) {
+          target.textContent += message.charAt(index);
+          index++;
+          setTimeout(typeChar, speed);
+        }
+      }
+      typeChar();
+    }
+
+    // Simple confetti animation
+    const canvas = document.querySelector('.confetti');
+    const ctx = canvas.getContext('2d');
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    const particles = [];
+    for (let i = 0; i < 150; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        r: Math.random() * 6 + 2,
+        d: Math.random() * 50,
+        color: `hsl(${Math.random() * 360}, 100%, 70%)`,
+        tilt: Math.random() * 10 - 10
+      });
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.fillStyle = p.color;
+        ctx.moveTo(p.x + p.tilt, p.y);
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      update();
+      requestAnimationFrame(draw);
+    }
+
+    function update() {
+      particles.forEach(p => {
+        p.y += Math.cos(p.d) + 1 + p.r / 2;
+        p.x += Math.sin(p.d);
+        if (p.y > height) {
+          p.x = Math.random() * width;
+          p.y = -10;
+        }
+      });
+    }
+
+    draw();
+  </script></body>
+  </html>
