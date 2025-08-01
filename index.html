@@ -91,11 +91,12 @@
       cursor: pointer;
     }
     .typing {
-      border-right: 2px solid #ff99c8;
-      white-space: nowrap;
-      overflow: hidden;
-      display: inline-block;
-      animation: blinkCursor 0.7s steps(1) infinite;
+  border-right: 2px solid #ff99c8;
+  white-space: normal;      /* allow wrapping */
+  word-break: break-word;   /* break long words if needed */
+  overflow: visible;        /* show overflow */
+  display: inline-block;
+  animation: blinkCursor 0.7s steps(1) infinite;
     }
     @keyframes blinkCursor {
       0% { border-color: #ff99c8; }
